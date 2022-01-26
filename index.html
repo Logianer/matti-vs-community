@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8">
-    <title>Matti Game</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <main>
 
-      <h2 style="top:10rem; left: 8rem">Das Mattimon-Battle</h2>
-      <button type="button" style="top:12rem; left: 19rem">Battle starten</button>
-      <button type="button" style="top:16rem; left: 2rem">Regeln & Klassen</button>
-      <!-- <button type="button" style="top:2rem; left: 10px">Hi2</button> -->
-      <div class="vl" style="border-left: 2px solid green; height: 100vh; left: 50vw; top: 0px; position: fixed;"></div>
-      <div class="vl" style="border-bottom: 2px solid green; height: 1px; width: 100vw; left: 0px; top: 50vh; position:fixed;"></div>
-    </main>
-  </body>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <title>Matti Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <h1 style="left: 46rem; top: 36rem; width:min-content;">Lädt...</h1>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  var screens = [{
+    name: "start",
+    contents: `<h2 style="top:10rem; left: 8rem">Das Mattimon-Battle</h2>
+      <button name="start" style="top:12rem; left: 19rem">Battle starten</button>
+      <button name="loadscene" style="top:16rem; left: 2rem" scene="info">Regeln & Klassen</button>`
+  },{
+    name: "info",
+    contents: `<h2 style="top:10rem; left: 8rem">Das Mattimon-Battle</h2>
+      <p></p>
+      <button name="loadscene" style="top:16rem; left: 2rem" scene="start">Zurück</button>`
+  }]
+  </script>
+  <script>
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+  $(window).on("load", async () => {
+    await sleep(2000)
+    $("main").html(screens.find(s => s.name == "start").contents)
+  })
+  $('main').on("click", '[name="loadscene"]', (e) => {
+    $("main").html(screens.find(s => s.name == $(e.target).attr("scene")).contents)
+  })
+  $('main').on("click", '[name="start"]', () => {
+    alert("❌ Nope ❌")
+  })
+  </script>
+</body>
+
 </html>
