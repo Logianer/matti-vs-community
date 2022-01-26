@@ -33,7 +33,7 @@
     return new Promise(resolve => setTimeout(resolve, milliseconds))
   }
   $(window).on("load", async () => {
-    //await sleep(2000)
+    await sleep(1000)
     $("main").html(screens.find(s => s.name == "start").contents)
   })
   $('main').on("click", '[name="loadscene"]', (e) => {
