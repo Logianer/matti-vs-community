@@ -15,7 +15,7 @@ h2 {
 }
 p {
   font-size: 1.25rem;
-  max-width: 90%; 
+  max-width: 90%;
 }
 main {
   background-color: #F8F8F8;
@@ -48,4 +48,16 @@ button:hover {
   background: #A8A8A8;
   text-shadow: 2px 2px 0px #fff;
   cursor: pointer;
+}
+.lsd {
+  animation: lsd 2s linear infinite;
+  color: #ff0000;
+}
+@keyframes lsd {
+  0% {
+    filter:hue-rotate(0deg) brightness(2);
+  }
+  100% {
+    filter: hue-rotate(360deg) brightness(2);
+  }
 }
